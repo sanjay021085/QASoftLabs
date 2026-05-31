@@ -3,6 +3,7 @@ import Navbar from "@/components/site/Navbar";
 import Hero from "@/components/site/Hero";
 import WhyChooseUs from "@/components/site/WhyChooseUs";
 import Services from "@/components/site/Services";
+import ManualTesting from "@/components/site/ManualTesting";
 import QAConsulting from "@/components/site/QAConsulting";
 import AutomationEngineering from "@/components/site/AutomationEngineering";
 import FrameworkEngineering from "@/components/site/FrameworkEngineering";
@@ -23,6 +24,7 @@ const Landing = () => {
       <Hero />
       <WhyChooseUs />
       <Services />
+      <ManualTesting />
       <QAConsulting />
       <AutomationEngineering />
       <FrameworkEngineering />

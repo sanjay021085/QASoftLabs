@@ -5,7 +5,7 @@ import { openConsultation } from "@/lib/events";
 
 const links = [
   { label: "Services", href: "#services" },
-  { label: "Manual QA", href: "#why-choose-us" },
+  { label: "Manual QA", href: "#manual-testing" },
   { label: "Consulting", href: "#qa-consulting" },
   { label: "Automation", href: "#automation-engineering" },
   { label: "Frameworks", href: "#frameworks" },
