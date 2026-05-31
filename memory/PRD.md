@@ -1,53 +1,55 @@
-# QASoftLabs — Product Requirements
+# QASoftLabs Website — Product Requirements
 
 ## Original Problem Statement
-Build a world-class modern enterprise SaaS-style website for an independent QA Automation & Functional Testing consulting brand named QASoftLabs. Premium global QA automation consultancy feel — clean light theme, emerald green accents, glassmorphism, modern SaaS aesthetics. React + Tailwind + Framer Motion + shadcn/ui + Lucide.
+Enhance existing QASoftLabs website (https://github.com/sanjay021085/QASoftLabs.git) to position it as a Quality Assurance, Automation Testing, Manual Testing, Consulting and Engineering Service Provider — NOT a freelancer/staffing site. Premium enterprise-grade appearance.
 
-## Architecture
-- **Frontend**: React 19 + Tailwind + Framer Motion + sonner toasts. Single-page composition in `pages/Landing.jsx` with section components in `components/site/*`.
-- **Backend**: FastAPI + Motor (MongoDB). All routes prefixed with `/api`. Collections: `contact_submissions`, `consultations`.
+## Constraints
+- Do not display owner photo or personal phone number publicly.
+- WhatsApp number 919925123492 is allowed only in wa.me deep-links (not visible text).
+- Business email: sanjay.businesstech@gmail.com (visible).
+- Preserve existing branding, color scheme, animations.
 
-## User Personas
-- Engineering Managers / CTOs evaluating QA automation partners
-- Product leads needing release-confidence consulting
-- Founders shipping enterprise software (BFSI, logistics, e-commerce)
+## Tech Stack
+- Frontend: React 19 + craco + Tailwind + framer-motion + lucide-react + sonner
+- Backend: FastAPI + Motor (MongoDB) + optional Resend email
+- Chatbot: rule-based (intentional — no LLM integration)
 
-## Core Requirements (static)
-- Premium light-theme marketing site (no dark base, emerald accents)
-- Sticky glass navbar with 7 anchor links + Book Consultation CTA
-- Hero with animated dashboard mock
-- 10 service cards
-- Architecture pillars: Targets, Levels, Objectives, Execution
-- 10 framework engineering cards
-- 6 industry verticals
-- 4 portfolio case studies with metrics
-- Contact form posting to /api/contact
-- Consultation modal posting to /api/consultation
-- Premium footer
+## Implemented (May 31, 2026)
+- Hero: New headline "End-to-End Quality Assurance and Automation Engineering Services" + subheadline + CTAs "Book Free Consultation" / "Explore Services"
+- NEW: WhyChooseUs section (Industry / Testing / Automation / Framework pillars)
+- Services: 8 cards (Functional, API, UI, Database, Integration, Regression, E2E, Release Validation)
+- NEW: QAConsulting section (5 consulting offerings + CTA card)
+- NEW: AutomationEngineering section (UI / API / AI Assisted Test Design / Defect Analysis / Regression Analysis)
+- NEW: FrameworkEngineering section (Design / Review / Enhancement / Re-Engineering + 3 framework types)
+- IdealEngagements rebranded to "Flexible QA Engagement Models" (6 services + 6 engagement options + 6 benefit cards)
+- Architecture: preserved
+- HowIWork (Process): 8 steps
+- NEW: Deliverables section (8 artefacts)
+- Industries: 7 cards (Banking, Finance, Healthcare, Logistics, Manufacturing, Enterprise Applications, SaaS Platforms)
+- Contact: Name + Company + Email + Requirement (select) + Message; phone removed from display
+- AIAssistant rebranded to "QASoftLabs QA Copilot" with eye-inspired animated avatar (blinking + pupil movement); lead fallback form posts to /api/contact when bot does not know an answer
+- Footer: phone reference removed, sectional anchor links
+- Founder section REMOVED from Landing (no personal photo)
+- Navbar: "Book Free Consultation" button + updated nav links
 
-## Implemented (2026-12)
-- Backend: GET /api/, GET /api/health, POST/GET /api/contact, POST/GET /api/consultation
-- Frontend: Navbar, Hero, Services, Architecture, Frameworks, Industries, Portfolio, Contact, Footer, ConsultationDialog
-- Outfit + DM Sans + JetBrains Mono fonts
-- Framer Motion scroll-reveal animations
-- Mobile-responsive nav with toggle
-- Sonner toasts for form feedback
-- Testing agent: 100% backend (10/10 pytest), 100% frontend flows
+## Backend Endpoints
+- GET /api/ -> service info
+- GET /api/health
+- POST /api/contact (name, email, company?, message)
+- GET /api/contact
+- POST /api/consultation (name, email, company?, phone?, preferred_date?, project_brief)
+- GET /api/consultation
 
-## Prioritized Backlog
-### P1
-- Email notifications on contact / consultation submission (Resend integration)
-- Real client logos / testimonials section
-- Admin view to manage submissions
+## Testing
+- 10/10 backend pytest cases pass
+- All frontend sections render in correct order
+- QA Copilot eye avatar, panel, lead form all functional
+- Contact form submission verified end-to-end
+- Mobile (390x844) responsiveness verified
+- Zero JS console errors
+- Phone number verified absent from visible text
 
-### P2
-- Blog / Insights section
-- Case study detail pages with deep-link routing
-- Multi-language (i18n)
-- SEO meta tags + OpenGraph
-- Analytics (PostHog / Plausible)
-
-## Next Tasks
-1. Collect real contact details (email, WhatsApp, LinkedIn) from client
-2. Optional: integrate Resend for email notifications
-3. Optional: replace placeholder portfolio metrics with real engagements
+## Future / Backlog (P1/P2)
+- (Optional) Replace rule-based chatbot with Emergent LLM key for more dynamic responses
+- (Minor) Migrate FastAPI @app.on_event('shutdown') to lifespan context manager
+- (Enhancement) Newsletter capture, downloadable case studies, dedicated /portfolio page with detailed case data
