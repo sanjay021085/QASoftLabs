@@ -23,10 +23,11 @@ const ConsultationDialog = () => {
   });
 
   // min = now+1h (rounded to next 30 min), max = now + 60 days
+  // Recompute whenever the dialog opens, so "min" is always relative to the moment of opening
   const { minDT, maxDT } = useMemo(() => {
+    if (!open) return { minDT: "", maxDT: "" };
     const now = new Date();
     const min = new Date(now.getTime() + 60 * 60 * 1000);
-    // round to next 30 minutes
     const minutes = min.getMinutes();
     min.setMinutes(minutes < 30 ? 30 : 0, 0, 0);
     if (minutes >= 30) min.setHours(min.getHours() + 1);
