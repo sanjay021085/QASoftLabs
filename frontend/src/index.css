@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    color: #022C22;
+    background: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code, .font-mono {
+    font-family: 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
+}
+
+.font-heading {
+    font-family: 'Outfit', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 166 89% 9%;
+        --card: 0 0% 100%;
+        --card-foreground: 166 89% 9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 166 89% 9%;
+        --primary: 160 84% 39%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 152 81% 96%;
+        --secondary-foreground: 158 64% 25%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 152 81% 96%;
+        --accent-foreground: 158 64% 25%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 160 84% 39%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Selection */
+::selection {
+    background: #D1FAE5;
+    color: #022C22;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+    background: #A7F3D0;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #10B981;
+}
+
+/* Grid pattern utility */
+.bg-grid {
+    background-image:
+        linear-gradient(to right, rgba(16, 185, 129, 0.09) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.09) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+.bg-dotgrid {
+    background-image: radial-gradient(rgba(16, 185, 129, 0.18) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+.bg-radial-emerald {
+    background: radial-gradient(ellipse 90% 70% at 50% 0%, rgba(16, 185, 129, 0.18), transparent 65%);
+}
+
+.bg-mesh {
+    background:
+        radial-gradient(at 12% 18%, rgba(16, 185, 129, 0.18) 0px, transparent 45%),
+        radial-gradient(at 88% 10%, rgba(20, 184, 166, 0.16) 0px, transparent 50%),
+        radial-gradient(at 70% 80%, rgba(5, 150, 105, 0.12) 0px, transparent 55%),
+        radial-gradient(at 8% 90%, rgba(110, 231, 183, 0.18) 0px, transparent 50%);
+}
+
+.section-tint {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F4FBF7 50%, #FFFFFF 100%);
+}
+
+.divider-emerald {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(16, 185, 129, 0.35) 50%, transparent 100%);
+}
+
+.noise {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.03  0 0 0 0 0.18  0 0 0 0 0.12  0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.05;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.text-balance {
+    text-wrap: balance;
+}
+
+/* Subtle glow */
+.glow-emerald {
+    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.15), 0 8px 32px -8px rgba(16, 185, 129, 0.25);
+}
+
+/* Animated gradient border */
+.gradient-border {
+    position: relative;
+}
+.gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(16,185,129,0.5), rgba(16,185,129,0.05));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0) }
+    50% { transform: translateY(-10px) }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.9); opacity: 0.7 }
+    100% { transform: scale(1.6); opacity: 0 }
+}
+.animate-pulse-ring { animation: pulse-ring 2.4s ease-out infinite; }
+
+@keyframes shimmer {
+    0% { background-position: -200% 0 }
+    100% { background-position: 200% 0 }
+}
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(16,185,129,0.18) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes flow-x {
+    0% { offset-distance: 0% }
+    100% { offset-distance: 100% }
+}
+@keyframes dash {
+    to { stroke-dashoffset: -200 }
+}
+.animate-dash { stroke-dasharray: 6 8; animation: dash 4s linear infinite; }
+
+@keyframes drift {
+    0%, 100% { transform: translate(0,0) }
+    50% { transform: translate(8px,-12px) }
+}
+.animate-drift { animation: drift 8s ease-in-out infinite; }
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.45) }
+    50% { box-shadow: 0 0 0 16px rgba(16,185,129,0) }
+}
+.animate-glow-pulse { animation: glow-pulse 2.6s ease-out infinite; }
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+}
+.animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 12s ease infinite;
+}
+
+/* Cursor spotlight (interactive cards) */
+.spotlight {
+    position: relative;
+    overflow: hidden;
+}
+.spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        400px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(16, 185, 129, 0.14),
+        transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+.spotlight:hover::before { opacity: 1; }
+
+/* Magnetic button shimmer */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+.btn-shine::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: -120%;
+    width: 60%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+}
+.btn-shine:hover::after { left: 130%; }

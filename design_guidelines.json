@@ -1,0 +1,170 @@
+{
+  "theme": "light",
+  "archetype": "1_and_4_hybrid",
+  "brand_name": "QASoftLabs",
+  "design_philosophy": "Premium global QA automation consultancy. Enterprise SaaS-style aesthetics. Clean, professional, futuristic but grounded. Light theme with generous whitespace, crisp typography, and emerald green accents to signify 'passing tests' and 'growth'. No generic templates, no crowded UIs.",
+  "colors": {
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#F8FAFC",
+      "tertiary": "#F0FDF4"
+    },
+    "text": {
+      "primary": "#022C22",
+      "secondary": "#064E3B",
+      "muted": "#475569",
+      "inverse": "#FFFFFF"
+    },
+    "brand": {
+      "primary": "#059669",
+      "primary_hover": "#047857",
+      "light": "#D1FAE5",
+      "glow": "rgba(16, 185, 129, 0.2)"
+    },
+    "border": {
+      "default": "#E2E8F0",
+      "focus": "#10B981"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Outfit, system-ui, sans-serif",
+      "body": "DM Sans, system-ui, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "sizes": {
+      "h1": "text-5xl sm:text-6xl tracking-tight font-bold",
+      "h2": "text-3xl sm:text-4xl tracking-tight font-semibold",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-slate-500",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-emerald-600"
+    }
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-24 md:py-32",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_gaps": "gap-8 md:gap-12"
+  },
+  "components": {
+    "navbar": {
+      "style": "fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-emerald-100/50 shadow-sm",
+      "links": ["Home", "Services", "Architecture", "Frameworks", "Industries", "Portfolio", "Contact"],
+      "cta": "Book Consultation"
+    },
+    "cards": {
+      "glassmorphism": "bg-white/80 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.04)]",
+      "standard": "bg-white border border-slate-200 rounded-2xl p-6 md:p-8 hover:border-emerald-300 hover:shadow-xl transition-all duration-300",
+      "glow_effect": "group-hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]"
+    },
+    "buttons": {
+      "primary": "bg-emerald-600 text-white hover:bg-emerald-700 px-6 py-3 rounded-full font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2",
+      "secondary": "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 px-6 py-3 rounded-full font-medium transition-all flex items-center justify-center gap-2",
+      "outline": "bg-transparent text-slate-700 border border-slate-300 hover:border-emerald-500 hover:text-emerald-700 px-6 py-3 rounded-full font-medium transition-all"
+    }
+  },
+  "sections": {
+    "hero": {
+      "layout": "grid lg:grid-cols-2 gap-12 items-center min-h-[90vh] relative overflow-hidden",
+      "background": "bg-gradient-to-br from-white via-emerald-50/30 to-white",
+      "visual": "Use 'hero_dashboard_visual' floating with framer-motion animation on the right side. Optionally use 'architecture_background' as an absolute positioned subtle opacity layer behind the hero text."
+    },
+    "services": {
+      "layout": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6",
+      "count": 10,
+      "style": "Bento grid inspired layout. Some cards span 2 columns to break monotony."
+    },
+    "architecture": {
+      "pillars": ["Targets", "Levels", "Objectives", "Execution"],
+      "style": "Horizontal connected flow or a 2x2 precise grid with structural borders. Minimalist."
+    },
+    "frameworks": {
+      "layout": "Grid or infinite scrolling marquee using 'react-fast-marquee'",
+      "count": 10,
+      "style": "Tech-focused, use monospace font for framework names to look like code."
+    },
+    "industries": {
+      "layout": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
+      "verticals": ["Banking", "Finance", "Insurance", "Manufacturing", "Logistics", "E-commerce"],
+      "card_style": "Image background with dark overlay bg-gradient-to-t from-black/80 to-black/20, text white at the bottom."
+    },
+    "portfolio": {
+      "layout": "grid grid-cols-1 md:grid-cols-2 gap-8",
+      "count": 4,
+      "style": "Large cards with metric highlights (e.g., '99% Faster Release', '0% Production Bugs')."
+    },
+    "contact": {
+      "layout": "grid lg:grid-cols-2 gap-12 items-start",
+      "form_style": "Clean inputs with focus:ring-2 focus:ring-emerald-500. Buttons for WhatsApp/LinkedIn."
+    },
+    "footer": {
+      "style": "bg-[#022C22] text-white py-20 px-4",
+      "accent": "Emerald accents for links. Large brand typography."
+    }
+  },
+  "motion_and_interactions": {
+    "scroll_reveal": "Framer Motion initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{duration:0.5}}",
+    "hover_lift": "hover:-translate-y-1 transition-transform duration-300",
+    "smooth_scroll": "Lenis library recommended for momentum scrolling."
+  },
+  "media": {
+    "images": [
+      {
+        "category": "hero_visual",
+        "url": "https://static.prod-images.emergentagent.com/jobs/8214913b-44b5-44d4-aafe-b2af3d5b5e18/images/79286405237b1b57307ccaa83983ba3e4d7ca42736d43852c47be2a3c76316ed.png",
+        "description": "3D Isometric Dashboard visualization for the hero section."
+      },
+      {
+        "category": "background_abstract",
+        "url": "https://static.prod-images.emergentagent.com/jobs/8214913b-44b5-44d4-aafe-b2af3d5b5e18/images/5cdef9f17c87afce208584f5600b3bf5fff4f43422079967fe578f477630cd0e.png",
+        "description": "Abstract architecture background for hero or architecture section."
+      },
+      {
+        "category": "industry_banking",
+        "url": "https://images.pexels.com/photos/5213890/pexels-photo-5213890.jpeg",
+        "description": "Modern corporate banking building."
+      },
+      {
+        "category": "industry_manufacturing",
+        "url": "https://images.pexels.com/photos/34207359/pexels-photo-34207359.jpeg",
+        "description": "Smart manufacturing robotics."
+      },
+      {
+        "category": "industry_logistics",
+        "url": "https://images.pexels.com/photos/9328777/pexels-photo-9328777.jpeg",
+        "description": "Cargo shipping ship."
+      },
+      {
+        "category": "industry_ecommerce",
+        "url": "https://images.pexels.com/photos/5239822/pexels-photo-5239822.jpeg",
+        "description": "Clean ecommerce checkout context."
+      },
+      {
+        "category": "industry_finance_insurance",
+        "url": "https://images.unsplash.com/photo-1763645440106-b235d3df37e5",
+        "description": "Modern office building with blue facade."
+      },
+      {
+        "category": "portfolio_case_study_1",
+        "url": "https://images.pexels.com/photos/9553905/pexels-photo-9553905.jpeg",
+        "description": "Professional software engineer working."
+      },
+      {
+        "category": "portfolio_case_study_2",
+        "url": "https://images.unsplash.com/photo-1549692520-acc6669e2f0c",
+        "description": "Man using gadget in room."
+      },
+      {
+        "category": "company_logo_placeholder",
+        "url": "https://images.pexels.com/photos/26576975/pexels-photo-26576975.jpeg",
+        "description": "Minimalist logo placeholder."
+      }
+    ]
+  },
+  "testing": {
+    "required_attributes": "All interactive elements must include data-testid attributes (e.g., data-testid='hero-cta-button')."
+  },
+  "dependencies": {
+    "instructions": "Install framer-motion, lucide-react, @phosphor-icons/react, and shadcn/ui primitives. Setup Tailwind CSS with custom colors."
+  }
+}

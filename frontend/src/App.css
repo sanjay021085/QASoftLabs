@@ -1,0 +1,6 @@
+/* Component-specific styles for QASoftLabs */
+.App {
+    min-height: 100vh;
+    background: #FFFFFF;
+    color: #022C22;
+}
