@@ -53,7 +53,7 @@ const HowIWork = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: (i % 4) * 0.05 }}
-            className="group relative rounded-3xl border border-emerald-100 bg-white p-7 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-20px_rgba(16,185,129,0.4)] transition-all overflow-hidden"
+            className="card-hover group relative rounded-3xl border border-emerald-100 bg-white p-7 hover:shadow-[0_24px_60px_-20px_rgba(16,185,129,0.4)] hover:border-emerald-300 overflow-hidden"
           >
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-emerald-50/60 to-transparent pointer-events-none" />
             <div className="relative">

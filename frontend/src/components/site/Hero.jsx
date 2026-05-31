@@ -58,11 +58,11 @@ const Hero = () => {
               className="mt-7 font-heading font-bold text-[2.6rem] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.02] tracking-tight text-balance"
             >
               <span className="text-white">End-to-End </span>
-              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent animate-text-grad">
                 Quality Assurance
               </span>
               <span className="text-white"> and </span>
-              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent animate-text-grad">
                 Automation
               </span>
               <span className="text-white"> Engineering Services</span>
@@ -210,25 +210,35 @@ const Hero = () => {
           ))}
         </motion.div>
 
-        {/* Trusted strip */}
+        {/* Trusted strip — marquee */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 pt-8 border-t border-emerald-500/15 flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-semibold tracking-[0.2em] text-emerald-200/70"
+          className="mt-10 pt-8 border-t border-emerald-500/15"
         >
-          <span className="inline-flex items-center gap-2">
+          <div className="flex items-center gap-3 mb-4 text-[11px] font-bold tracking-[0.22em] text-emerald-200/70">
             <Workflow className="h-3.5 w-3.5 text-emerald-400" />
-            TRUSTED BY ENGINEERING TEAMS
-          </span>
-          <span className="text-emerald-500/40">·</span>
-          {["Banking", "Healthcare", "Logistics", "SaaS"].map((d, i) => (
-            <React.Fragment key={d}>
-              <span className="text-emerald-200/80">{d.toUpperCase()}</span>
-              {i < 3 && <span className="text-emerald-500/40">·</span>}
-            </React.Fragment>
-          ))}
+            TRUSTED BY ENGINEERING TEAMS ACROSS
+          </div>
+          <div className="marquee-pause relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_10%,#000_90%,transparent)]">
+            <div className="marquee-track gap-10 py-1">
+              {[...Array(2)].map((_, dup) => (
+                <div key={dup} className="flex items-center gap-10 shrink-0 pr-10">
+                  {["Banking", "Finance", "Healthcare", "Logistics", "Manufacturing", "Enterprise Apps", "SaaS Platforms"].map((d) => (
+                    <span
+                      key={`${dup}-${d}`}
+                      className="text-sm md:text-base font-bold tracking-[0.18em] text-emerald-100/85 uppercase whitespace-nowrap inline-flex items-center gap-3"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

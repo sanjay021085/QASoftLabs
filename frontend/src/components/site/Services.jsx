@@ -58,7 +58,7 @@ const Services = () => {
                   e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
                   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
                 }}
-                className="spotlight group relative overflow-hidden rounded-3xl border border-emerald-100 bg-white p-7 hover:border-emerald-300 hover:shadow-[0_28px_70px_-24px_rgba(16,185,129,0.45)] hover:-translate-y-1.5 transition-all duration-300"
+                className="spotlight card-hover group relative overflow-hidden rounded-3xl border border-emerald-100 bg-white p-7 hover:border-emerald-300 hover:shadow-[0_28px_70px_-24px_rgba(16,185,129,0.45)]"
               >
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-emerald-50/60 to-transparent pointer-events-none" />
                 <div className="relative">

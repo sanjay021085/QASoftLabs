@@ -85,7 +85,7 @@ const QAConsulting = () => (
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="group relative rounded-2xl border border-emerald-100 bg-white p-6 md:p-7 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-[0_24px_60px_-24px_rgba(16,185,129,0.35)] transition-all"
+                className="card-hover group relative rounded-2xl border border-emerald-100 bg-white p-6 md:p-7 hover:border-emerald-300 hover:shadow-[0_24px_60px_-24px_rgba(16,185,129,0.35)]"
               >
                 <div className="flex items-start gap-5">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200 shrink-0">

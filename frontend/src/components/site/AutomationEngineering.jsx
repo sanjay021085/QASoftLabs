@@ -74,7 +74,7 @@ const AutomationEngineering = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group relative rounded-3xl border border-emerald-500/20 bg-emerald-900/30 backdrop-blur-sm p-7 hover:-translate-y-1.5 hover:border-emerald-400/40 hover:bg-emerald-900/50 transition-all overflow-hidden"
+              className="card-hover group relative rounded-3xl border border-emerald-500/20 bg-emerald-900/30 backdrop-blur-sm p-7 hover:border-emerald-400/40 hover:bg-emerald-900/50 overflow-hidden"
             >
               <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-emerald-500/10 blur-3xl group-hover:bg-emerald-500/20 transition-colors pointer-events-none" />
               <div className="relative">

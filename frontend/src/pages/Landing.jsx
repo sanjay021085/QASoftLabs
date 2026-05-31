@@ -8,7 +8,6 @@ import QAConsulting from "@/components/site/QAConsulting";
 import AutomationEngineering from "@/components/site/AutomationEngineering";
 import FrameworkEngineering from "@/components/site/FrameworkEngineering";
 import IdealEngagements from "@/components/site/IdealEngagements";
-import Architecture from "@/components/site/Architecture";
 import HowIWork from "@/components/site/HowIWork";
 import Deliverables from "@/components/site/Deliverables";
 import Industries from "@/components/site/Industries";
@@ -29,7 +28,6 @@ const Landing = () => {
       <AutomationEngineering />
       <FrameworkEngineering />
       <IdealEngagements />
-      <Architecture />
       <HowIWork />
       <Deliverables />
       <Industries />

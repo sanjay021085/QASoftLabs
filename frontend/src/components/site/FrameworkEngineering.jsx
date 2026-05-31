@@ -80,7 +80,7 @@ const FrameworkEngineering = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group relative rounded-3xl border border-emerald-100 bg-white p-7 md:p-8 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-24px_rgba(16,185,129,0.4)] transition-all"
+              className="card-hover group relative rounded-3xl border border-emerald-100 bg-white p-7 md:p-8 hover:shadow-[0_28px_70px_-24px_rgba(16,185,129,0.4)] hover:border-emerald-300"
             >
               <div className="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-emerald-900 text-emerald-300 shadow-md shadow-emerald-900/30">
                 <Icon className="h-5 w-5" />

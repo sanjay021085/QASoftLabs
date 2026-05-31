@@ -45,7 +45,7 @@ const PillarCard = ({ icon: Icon, title, subtitle, items, count, accentIcon: Acc
     viewport={{ once: true, margin: "-60px" }}
     transition={{ duration: 0.5 }}
     data-testid={`why-choose-${title.toLowerCase().replace(/\s+/g, "-")}`}
-    className="group relative rounded-3xl border border-emerald-100 bg-white p-7 md:p-9 hover:-translate-y-1 hover:shadow-[0_30px_80px_-30px_rgba(16,185,129,0.4)] transition-all overflow-hidden"
+    className="card-hover group relative rounded-3xl border border-emerald-100 bg-white p-7 md:p-9 hover:shadow-[0_30px_80px_-30px_rgba(16,185,129,0.4)] hover:border-emerald-300 overflow-hidden"
   >
     <div className="absolute -top-16 -right-16 h-56 w-56 rounded-full bg-emerald-100/50 blur-3xl pointer-events-none" />
     <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-emerald-50/60 to-transparent pointer-events-none" />
