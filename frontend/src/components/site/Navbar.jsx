@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { openConsultation } from "@/lib/events";
 
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "Why Us", href: "#why-choose-us" },
   { label: "Services", href: "#services" },
+  { label: "Manual QA", href: "#why-choose-us" },
   { label: "Consulting", href: "#qa-consulting" },
   { label: "Automation", href: "#automation-engineering" },
   { label: "Frameworks", href: "#frameworks" },
-  { label: "Engagements", href: "#engagement-models" },
-  { label: "Process", href: "#process" },
+  { label: "Engagement", href: "#engagement-models" },
   { label: "Industries", href: "#industries" },
   { label: "Contact", href: "#contact" },
 ];
@@ -27,27 +25,40 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Transparent on hero (top), light glass on scroll
+  const headerCls = scrolled
+    ? "bg-white/85 backdrop-blur-xl border-b border-emerald-100/70 shadow-[0_4px_24px_-12px_rgba(2,44,34,0.08)]"
+    : "bg-transparent border-b border-emerald-500/15";
+
+  const linkColor = scrolled
+    ? "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/60"
+    : "text-emerald-50/85 hover:text-white hover:bg-emerald-500/15";
+
+  const logoTextColor = scrolled ? "text-emerald-950" : "text-white";
+  const logoTagColor = scrolled ? "text-emerald-600" : "text-emerald-300";
+
   return (
     <header
       data-testid="site-navbar"
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-emerald-100/70 shadow-[0_4px_24px_-12px_rgba(2,44,34,0.08)]"
-          : "bg-white/40 backdrop-blur-md border-b border-transparent"
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${headerCls}`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between gap-3">
         <a
           href="#home"
           data-testid="navbar-logo"
-          className="flex items-center gap-2.5 group shrink-0 whitespace-nowrap"
+          className="flex items-center gap-3 group shrink-0 whitespace-nowrap"
         >
-          <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-md shadow-emerald-500/20 shrink-0">
-            <ShieldCheck className="h-5 w-5" />
+          <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-emerald-950 shadow-md shadow-emerald-500/30 shrink-0 font-heading font-extrabold text-lg tracking-tighter">
+            QS
             <span className="absolute -inset-0.5 rounded-xl ring-1 ring-emerald-300/40" />
           </span>
-          <span className="font-heading text-lg md:text-xl font-semibold tracking-tight text-emerald-950 whitespace-nowrap">
-            QASoft<span className="text-emerald-600">Labs</span>
+          <span className="flex flex-col leading-none">
+            <span className={`font-heading text-lg md:text-xl font-bold tracking-tight ${logoTextColor}`}>
+              QASoftLabs
+            </span>
+            <span className={`text-[9px] md:text-[10px] font-semibold tracking-[0.22em] mt-1 ${logoTagColor}`}>
+              QUALITY ENGINEERING
+            </span>
           </span>
         </a>
 
@@ -57,7 +68,7 @@ const Navbar = () => {
               <a
                 href={l.href}
                 data-testid={`nav-link-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
-                className="px-2.5 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700 transition-colors rounded-md hover:bg-emerald-50/60 whitespace-nowrap"
+                className={`px-3 py-2 text-sm font-medium transition-colors rounded-md whitespace-nowrap ${linkColor}`}
               >
                 {l.label}
               </a>
@@ -69,17 +80,22 @@ const Navbar = () => {
           <button
             data-testid="navbar-book-consultation"
             onClick={openConsultation}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-all shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/30 hover:-translate-y-0.5 whitespace-nowrap"
+            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap hover:-translate-y-0.5 ${
+              scrolled
+                ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md shadow-emerald-500/20"
+                : "bg-emerald-400 text-emerald-950 hover:bg-emerald-300 shadow-[0_14px_30px_-10px_rgba(16,185,129,0.55)]"
+            }`}
           >
             Book Free Consultation
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-200 animate-pulse" />
           </button>
         </div>
 
         <button
           data-testid="navbar-mobile-toggle"
           onClick={() => setOpen((s) => !s)}
-          className="lg:hidden p-2 rounded-md text-emerald-900 hover:bg-emerald-50 transition shrink-0"
+          className={`lg:hidden p-2 rounded-md transition shrink-0 ${
+            scrolled ? "text-emerald-900 hover:bg-emerald-50" : "text-white hover:bg-emerald-500/15"
+          }`}
           aria-label="Toggle menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -113,7 +129,7 @@ const Navbar = () => {
                   setOpen(false);
                   openConsultation();
                 }}
-                className="mt-2 w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700"
+                className="mt-2 w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-600 text-white text-sm font-bold hover:bg-emerald-700"
               >
                 Book Free Consultation
               </button>

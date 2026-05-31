@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CalendarCheck2, CheckCircle2, Activity, Zap, GitBranch, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, CalendarCheck2, GitBranch, FlaskConical, Plug, Workflow, Rocket, CheckCircle2, Cpu } from "lucide-react";
 import { openConsultation } from "@/lib/events";
-import LiveHeroOverlay from "@/components/site/LiveHeroOverlay";
-
-const ROTATING_HINTS = [
-  "Functional & API automation",
-  "Framework re-engineering",
-  "Release validation gates",
-  "QA consulting & strategy",
-];
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -17,108 +9,92 @@ const fadeUp = {
   viewport: { once: true, margin: "-80px" },
 };
 
+const stats = [
+  { value: "12+", label: "Years of QA expertise" },
+  { value: "200+", label: "Releases validated" },
+  { value: "40+", label: "Automation frameworks" },
+  { value: "7", label: "Industry verticals" },
+];
+
+const pipeline = [
+  { icon: GitBranch, label: "Code Commit", status: "✓ PASSED", progress: 100, tone: "done" },
+  { icon: CheckCircle2, label: "Unit Tests", status: "✓ PASSED", progress: 100, tone: "done" },
+  { icon: Plug, label: "API Tests", status: "RUNNING", progress: 68, tone: "running" },
+  { icon: Cpu, label: "E2E Suite", status: "QUEUED", progress: 0, tone: "queued" },
+  { icon: Rocket, label: "Release Ready", status: "QUEUED", progress: 0, tone: "queued" },
+];
+
 const Hero = () => {
-  const [hintIdx, setHintIdx] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setHintIdx((i) => (i + 1) % ROTATING_HINTS.length), 2800);
-    return () => clearInterval(id);
-  }, []);
-
   return (
-    <section id="home" data-testid="hero-section" className="relative pt-28 md:pt-36 pb-20 md:pb-24 overflow-hidden">
-      <div className="absolute inset-0 bg-mesh opacity-80 pointer-events-none" />
-      <div className="absolute inset-0 bg-radial-emerald pointer-events-none" />
-      <div className="absolute inset-0 bg-grid opacity-[0.35] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_30%,transparent_75%)] pointer-events-none" />
-      <div className="absolute inset-0 noise pointer-events-none mix-blend-soft-light" />
-      <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-emerald-300/20 blur-3xl pointer-events-none" />
-      <div className="absolute top-32 -right-10 h-80 w-80 rounded-full bg-teal-300/20 blur-3xl pointer-events-none" />
+    <section
+      id="home"
+      data-testid="hero-section"
+      className="relative pt-28 md:pt-32 pb-20 md:pb-24 overflow-hidden bg-emerald-950 text-white"
+    >
+      {/* Background grid + glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 [background-image:linear-gradient(rgba(16,185,129,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.07)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_30%,transparent_80%)]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[520px] w-[820px] rounded-full bg-emerald-500/15 blur-[140px]" />
+        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-emerald-500/15 blur-3xl" />
+        <div className="absolute top-40 -right-20 h-80 w-80 rounded-full bg-teal-500/15 blur-3xl" />
+      </div>
 
-      <LiveHeroOverlay />
+      {/* Floating accent eye top-right */}
+      <div className="absolute top-28 right-10 hidden md:flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-500/30 bg-emerald-900/40 backdrop-blur">
+        <CheckCircle2 className="h-5 w-5 text-emerald-300/80" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left content */}
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-200 bg-emerald-50/70 text-emerald-700 text-xs font-medium tracking-wide">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              QA Consulting · Testing · Automation · Engineering
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-900/40 backdrop-blur text-emerald-200 text-[11px] font-semibold tracking-[0.2em]">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+              QUALITY ENGINEERING · CONSULTING · AUTOMATION
             </div>
 
-            <h1 className="mt-6 font-heading font-semibold text-4xl sm:text-5xl lg:text-[3.6rem] xl:text-6xl leading-[1.05] tracking-tight text-emerald-950 text-balance">
-              End-to-End{" "}
-              <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
-                  Quality Assurance
-                </span>
-                <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400/0 via-emerald-400/70 to-emerald-400/0 rounded-full" />
-              </span>{" "}
-              and Automation Engineering Services
+            <h1
+              data-testid="hero-headline"
+              className="mt-7 font-heading font-bold text-[2.6rem] sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.02] tracking-tight text-balance"
+            >
+              <span className="text-white">End-to-End </span>
+              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                Quality Assurance
+              </span>
+              <span className="text-white"> and </span>
+              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                Automation
+              </span>
+              <span className="text-white"> Engineering Services</span>
             </h1>
 
-            <p className="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-              Delivering functional testing, API validation, automation engineering,
-              framework development, QA consulting, and release assurance services for
-              startups, growing businesses, and enterprise organizations.
+            <p className="mt-7 text-base sm:text-lg text-emerald-100/75 leading-relaxed max-w-2xl">
+              Delivering functional testing, API validation, automation engineering, framework
+              development, QA consulting, and release assurance services for startups, growing
+              businesses, and enterprise organizations.
             </p>
 
-            <div className="mt-5 h-7 flex items-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={hintIdx}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.4 }}
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 backdrop-blur border border-emerald-100 text-xs font-medium text-emerald-800 shadow-sm"
-                >
-                  <Sparkles className="h-3 w-3 text-emerald-500" />
-                  {ROTATING_HINTS[hintIdx]}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-9 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={openConsultation}
                 data-testid="hero-book-free-consultation"
-                className="btn-shine inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all hover:-translate-y-0.5"
+                className="btn-shine inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-500 text-emerald-950 text-sm font-bold hover:bg-emerald-400 shadow-[0_18px_40px_-12px_rgba(16,185,129,0.55)] transition-all hover:-translate-y-0.5"
               >
                 <CalendarCheck2 className="h-4 w-4" />
                 Book Free Consultation
+                <ArrowRight className="h-4 w-4" />
               </button>
               <a
                 href="#services"
                 data-testid="hero-explore-services"
-                className="btn-shine inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-emerald-700 border border-emerald-200 hover:border-emerald-400 hover:bg-emerald-50 text-sm font-semibold transition-all"
+                className="btn-shine inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-emerald-900/50 border border-emerald-500/30 text-emerald-100 text-sm font-semibold hover:bg-emerald-900/80 hover:border-emerald-400/60 transition-all backdrop-blur"
               >
                 Explore Services
-                <ArrowRight className="h-4 w-4" />
               </a>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-2 max-w-xl">
-              {[
-                "Functional Testing",
-                "API Automation",
-                "UI Automation",
-                "Framework Engineering",
-                "Release Validation",
-                "QA Consulting",
-              ].map((c) => (
-                <span
-                  key={c}
-                  data-testid={`hero-capability-${c.toLowerCase().replace(/\//g, "-").replace(/\s+/g, "-")}`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur border border-emerald-100 text-xs font-medium text-emerald-800 hover:border-emerald-300 hover:bg-emerald-50 transition"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  {c}
-                </span>
-              ))}
             </div>
           </motion.div>
 
+          {/* Right: QA Pipeline Live mock */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -126,118 +102,137 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative animate-float-slow">
-              <div className="absolute -inset-6 bg-gradient-to-br from-emerald-300/30 via-teal-200/30 to-transparent blur-3xl rounded-[3rem]" />
-              <div className="relative rounded-3xl glass border border-white/60 shadow-[0_30px_80px_-24px_rgba(2,44,34,0.18)] p-5 sm:p-6 gradient-border">
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
-                  </div>
-                  <span className="font-mono text-[10px] text-slate-500">qasoftlabs › release-pipeline</span>
+            <div className="absolute -inset-6 bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent blur-3xl rounded-[3rem]" />
+            <div className="relative rounded-3xl border border-emerald-500/25 bg-emerald-900/40 backdrop-blur-xl p-5 sm:p-6 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.6)]">
+              {/* Window chrome */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
                 </div>
-
-                <div className="grid grid-cols-3 gap-3">
-                  <Tile icon={<Activity className="h-4 w-4" />} label="Suites" value="248" />
-                  <Tile icon={<Zap className="h-4 w-4" />} label="Pass Rate" value="99.2%" highlight />
-                  <Tile icon={<GitBranch className="h-4 w-4" />} label="Parallel" value="32x" />
-                </div>
-
-                <div className="mt-5 rounded-2xl border border-emerald-100 bg-white/70 p-4">
-                  <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
-                    <span className="font-medium">Regression Run · #4821</span>
-                    <span className="font-mono text-emerald-600">02:14</span>
-                  </div>
-                  <div className="space-y-2.5">
-                    {[
-                      { label: "auth.spec.ts", time: "412ms" },
-                      { label: "checkout.spec.ts", time: "1.1s" },
-                      { label: "api/payments.test.ts", time: "289ms" },
-                      { label: "dashboard.e2e.ts", time: "964ms" },
-                    ].map((row, i) => (
-                      <motion.div
-                        key={row.label}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 + i * 0.08 }}
-                        className="flex items-center justify-between text-xs"
-                      >
-                        <div className="flex items-center gap-2 font-mono text-slate-600">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                          {row.label}
-                        </div>
-                        <span className="font-mono text-slate-400">{row.time}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <div className="mt-4 h-1.5 w-full rounded-full bg-emerald-50 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "92%" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.2, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-4 flex items-center gap-2 text-[11px] text-slate-500">
-                  <span className="font-mono">coverage</span>
-                  {[88, 92, 76, 95, 81, 90, 84, 96].map((v, i) => (
-                    <span
-                      key={i}
-                      className="inline-block rounded-sm bg-emerald-500/80"
-                      style={{ width: 6, height: `${v / 6}px` }}
-                    />
-                  ))}
-                  <span className="font-mono text-emerald-600 ml-1">+12.4%</span>
+                <div className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.22em] text-emerald-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  QA PIPELINE · LIVE
                 </div>
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="absolute -left-4 sm:-left-10 top-10 hidden sm:flex items-center gap-2 px-3 py-2 rounded-2xl bg-white border border-emerald-100 shadow-lg shadow-emerald-500/5"
-              >
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                <span className="text-xs font-medium text-emerald-900">Release Gate · Passed</span>
-              </motion.div>
+              <div className="space-y-3">
+                {pipeline.map((row, i) => {
+                  const Icon = row.icon;
+                  const isDone = row.tone === "done";
+                  const isRunning = row.tone === "running";
+                  return (
+                    <motion.div
+                      key={row.label}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.15 + i * 0.08 }}
+                      className="rounded-2xl border border-emerald-500/20 bg-emerald-900/30 p-3.5"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`inline-flex h-9 w-9 items-center justify-center rounded-xl ${
+                            isDone
+                              ? "bg-emerald-500/20 text-emerald-300"
+                              : isRunning
+                              ? "bg-emerald-500/15 text-emerald-300"
+                              : "bg-emerald-500/10 text-emerald-300/70"
+                          }`}
+                        >
+                          <Icon className="h-4 w-4" />
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-semibold text-emerald-50">{row.label}</div>
+                        </div>
+                        <div
+                          className={`text-[10px] font-bold tracking-[0.2em] ${
+                            isDone
+                              ? "text-emerald-300"
+                              : isRunning
+                              ? "text-emerald-400"
+                              : "text-emerald-200/40"
+                          }`}
+                        >
+                          {row.status}
+                        </div>
+                      </div>
+                      <div className="mt-3 h-1.5 w-full rounded-full bg-emerald-950/60 overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${row.progress}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.1, delay: 0.25 + i * 0.08, ease: "easeOut" }}
+                          className={`h-full rounded-full ${
+                            isDone
+                              ? "bg-gradient-to-r from-emerald-400 to-emerald-500"
+                              : isRunning
+                              ? "bg-gradient-to-r from-emerald-300 to-emerald-500 animate-pulse"
+                              : "bg-emerald-700/50"
+                          }`}
+                        />
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65 }}
-                className="absolute -right-3 sm:-right-8 bottom-10 hidden sm:flex items-center gap-2 px-3 py-2 rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-500/30"
-              >
-                <CheckCircle2 className="h-4 w-4" />
-                <span className="text-xs font-medium">Zero Critical Defects</span>
-              </motion.div>
+              <div className="mt-5 flex items-center justify-between text-[11px]">
+                <div className="inline-flex items-center gap-1.5 text-emerald-300/80">
+                  <FlaskConical className="h-3.5 w-3.5" /> 0 critical defects
+                </div>
+                <div className="font-mono text-emerald-300">
+                  coverage: <span className="text-emerald-200">94.2%</span><span className="animate-pulse">_</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
+
+        {/* Stats strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 max-w-4xl"
+        >
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              data-testid={`hero-stat-${i}`}
+              className="text-left"
+            >
+              <div className="font-heading text-3xl md:text-4xl font-bold text-emerald-300">{s.value}</div>
+              <div className="mt-1 text-xs md:text-sm text-emerald-100/60">{s.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Trusted strip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-10 pt-8 border-t border-emerald-500/15 flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-semibold tracking-[0.2em] text-emerald-200/70"
+        >
+          <span className="inline-flex items-center gap-2">
+            <Workflow className="h-3.5 w-3.5 text-emerald-400" />
+            TRUSTED BY ENGINEERING TEAMS
+          </span>
+          <span className="text-emerald-500/40">·</span>
+          {["Banking", "Healthcare", "Logistics", "SaaS"].map((d, i) => (
+            <React.Fragment key={d}>
+              <span className="text-emerald-200/80">{d.toUpperCase()}</span>
+              {i < 3 && <span className="text-emerald-500/40">·</span>}
+            </React.Fragment>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 };
-
-const Tile = ({ icon, label, value, highlight }) => (
-  <div
-    className={`rounded-2xl border p-3 ${
-      highlight
-        ? "bg-emerald-600 border-emerald-600 text-white shadow-md shadow-emerald-500/20"
-        : "bg-white border-emerald-100 text-emerald-900"
-    }`}
-  >
-    <div className={`flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider ${highlight ? "text-emerald-100" : "text-emerald-600"}`}>
-      {icon}
-      {label}
-    </div>
-    <div className="mt-1.5 font-heading text-lg font-semibold">{value}</div>
-  </div>
-);
 
 export default Hero;
